@@ -1,0 +1,2 @@
+class Superstore < ApplicationRecord
+end
