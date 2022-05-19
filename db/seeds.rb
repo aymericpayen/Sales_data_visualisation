@@ -4,11 +4,7 @@ require 'date'
 
 def date_format_conversion(date)
   date = date.to_s.split('/')
-  print date
   new_date="#{date[2]}-#{date[0]}-#{date[1]}"
-  p date[2]
-  p date[0]
-  p date[1]
   #p new_date.class
   return Date.strptime(new_date, '%Y-%m-%d')
 end

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="d-flex justify-content-start">
     <h1>Memory - Superstore</h1>
-    <h1 class="text-danger"><%=" - #{params[:state]}" if params[:state].length >0%></h1>
+    <h1 class="text-danger"><%= "- #{params[:state]}" if !(params[:state].nil?)%></h1>
   </div>
   <div class="metrics-selector d-flex justify-content-start my-5">
     <h2>Select a state to display data:</h2>
@@ -15,7 +15,7 @@
     <div class="card card-style d-flex align-items-center">
       <div class="card-body ">
         <div class="">
-          <h5 class="text-center">Revenue <%= "for \"#{params[:state]}\":" if params[:state].length >0%> </h5>
+          <h5 class="text-center">Revenue <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%> </h5>
           <% if @superstores_revenue.nil? %>
             <h6 class="text-center">Select "All states" or a specific state</h6>
           <% else %>
@@ -27,7 +27,7 @@
     <%# Display of the metrics of revenue per order depending on params[:state]  %>
     <div class="card card-style d-flex align-items-center">
       <div class="card-body">
-        <h5 class="text-center">Revenue/order <%= "for \"#{params[:state]}\":" if params[:state].length >0%></h5>
+        <h5 class="text-center">Revenue/order <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%></h5>
         <% if @superstores_revenue_per_order.nil? %>
           <h6 class="text-center">Select "All states" or a specific state</h6>
         <% else %>
@@ -38,7 +38,7 @@
     <%# Display of the metrics of numbers of diffferent customers depending on params[:state]  %>
     <div class="card card-style d-flex align-items-center">
       <div class="card-body">
-        <h5 class="text-center">Total of customers <%= "for \"#{params[:state]}\":" if params[:state].length >0%></h5>
+        <h5 class="text-center">Total of customers <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%></h5>
         <% if @superstores_customers.nil? %>
           <h6 class="text-center">Select "All states" or a specific state</h6>
         <% else %>
