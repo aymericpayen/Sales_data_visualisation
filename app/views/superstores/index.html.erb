@@ -1,12 +1,12 @@
 <div class="container">
   <div class="d-flex justify-content-start">
     <h1>Memory - Superstore</h1>
-    <h1 class="text-danger"><%= "- #{params[:state]}" if !(params[:state].nil?)%></h1>
+    <h1 class="text-danger"><%=" -#{params[:state]}" if !(params[:state].nil?)%></h1>
   </div>
   <div class="metrics-selector d-flex justify-content-start my-5">
     <h2>Select a state to display data:</h2>
     <%= form_tag "/superstores", :method => :get do %>
-      <%= select_tag( :state, options_for_select(["All states"] + @superstores_state), :include_blank => true) %>
+      <%= select_tag( :state, options_for_select(["All states"] + @superstores_state)) %>
       <%= submit_tag "Show data!", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="metrics-graph-display my-5">
-    <h2>Revenue per month</h2>
-    <%=column_chart @superstores_sales_per_month_graph, title: "Revnue per month", xtitle: "month/year", ytitle: "$", empty:"Select \"All states\" or a specific state to dislpay revenue per month/year" %>
+    <h2 class="my-5">Revenue per month</h2>
+    <%=column_chart @superstores_sales_per_month_graph, title: "Revnue per month/year", xtitle: "month/year", ytitle: "Sales ($)", empty:"Select \"All states\" or a specific state to dislpay revenue per month/year" %>
   </div>
 </div>
