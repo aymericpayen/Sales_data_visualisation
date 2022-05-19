@@ -1,12 +1,11 @@
 <div class="container">
   <div class="d-flex justify-content-start">
-    <h1>Memory - Superstore</h1>
-    <h1 class="text-danger"><%=" -#{params[:state]}" if !(params[:state].nil?)%></h1>
+    <h1>Memory - Superstore <span class="badge bg-primary"><%="#{params[:state]}" if !(params[:state].nil?)%></span></h1>
   </div>
-  <div class="metrics-selector d-flex justify-content-start my-5">
+  <div class="metrics-selector d-flex justify-content-start align-items-center my-5">
     <h2>Select a state to display data:</h2>
     <%= form_tag "/superstores", :method => :get do %>
-      <%= select_tag( :state, options_for_select(["All states"] + @superstores_state)) %>
+      <%= select_tag( :state, options_for_select(["All states"] + @superstores_state), class: "mx-2") %>
       <%= submit_tag "Show data!", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -15,11 +14,11 @@
     <div class="card card-style d-flex align-items-center">
       <div class="card-body ">
         <div class="">
-          <h5 class="text-center">Revenue <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%> </h5>
+          <h4 class="text-center">Revenue <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%> </h4>
           <% if @superstores_revenue.nil? %>
-            <h6 class="text-center">Select "All states" or a specific state</h6>
+            <h5 class="text-center">Select "All states" or a specific state</h5>
           <% else %>
-            <h6 class="text-center"><%=@superstores_revenue%>$</h6>
+            <h5 class="text-center"><span class="badge bg-primary"><%=@superstores_revenue%>$</span></h5>
           <% end %>
         </div>
       </div>
@@ -27,28 +26,28 @@
     <%# Display of the metrics of revenue per order depending on params[:state]  %>
     <div class="card card-style d-flex align-items-center">
       <div class="card-body">
-        <h5 class="text-center">Revenue/order <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%></h5>
+        <h4 class="text-center">Average revenue/order <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%></h4>
         <% if @superstores_revenue_per_order.nil? %>
-          <h6 class="text-center">Select "All states" or a specific state</h6>
+          <h5 class="text-center">Select "All states" or a specific state</h5>
         <% else %>
-          <h6 class="text-center"><%= @superstores_revenue_per_order.truncate(2) %>$</h6>
+          <h5 class="text-center"><span class="badge bg-primary"><%= @superstores_revenue_per_order %>$</span></h5>
         <% end %>
       </div>
     </div>
     <%# Display of the metrics of numbers of diffferent customers depending on params[:state]  %>
     <div class="card card-style d-flex align-items-center">
       <div class="card-body">
-        <h5 class="text-center">Total of customers <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%></h5>
+        <h4 class="text-center">Total of customers <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%></h4>
         <% if @superstores_customers.nil? %>
-          <h6 class="text-center">Select "All states" or a specific state</h6>
+          <h5 class="text-center">Select "All states" or a specific state</h5>
         <% else %>
-          <h6 class="text-center"><%= @superstores_customers%></h6>
+          <h5 class="text-center"><span class="badge bg-primary"><%= @superstores_customers%></span></h5>
         <% end %>
       </div>
     </div>
   </div>
   <div class="metrics-graph-display my-5">
-    <h2 class="my-5">Revenue per month</h2>
+    <h2 class="my-5">Revenues per month/year:</h2>
     <%=column_chart @superstores_sales_per_month_graph, title: "Revnue per month/year", xtitle: "month/year", ytitle: "Sales ($)", empty:"Select \"All states\" or a specific state to dislpay revenue per month/year" %>
   </div>
 </div>
