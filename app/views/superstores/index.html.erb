@@ -14,7 +14,7 @@
     <div class="card card-style d-flex align-items-center">
       <div class="card-body ">
         <div class="">
-          <h4 class="text-center">Revenue <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%> </h4>
+          <h4 class="text-center">Total revenues <%= "for \"#{params[:state]}\":" if !(params[:state].nil?)%> </h4>
           <% if @superstores_revenue.nil? %>
             <h5 class="text-center">Select "All states" or a specific state</h5>
           <% else %>
@@ -32,7 +32,7 @@
         <% else %>
           <h5 class="text-center"><span class="badge bg-primary"><%= @superstores_revenue_per_order %>$</span></h5>
         <% end %>
-      </div>
+      </div> 
     </div>
     <%# Display of the metrics of numbers of diffferent customers depending on params[:state]  %>
     <div class="card card-style d-flex align-items-center">
