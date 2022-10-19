@@ -6,6 +6,7 @@ $ bundle install
 Next, create the database:
 ```
 $ rails db:create
+```
 Next, migrate the database:
 ```
 $ rails db:migrate
